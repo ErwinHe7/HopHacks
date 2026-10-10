@@ -15,8 +15,8 @@ router.get('/',async(req,res)=>{
 router.put('/',async(req,res)=>{
     try{
         const newReport = new Report(req.body);
-        await newReport.save();
-        res.status(200).json(data);
+        const savedReport = await newReport.save();
+        res.status(201).json(savedReport);
     }
     catch(err){
         res.status(500).json(err);
